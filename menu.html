@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[SpiceVista] - Menu</title>
+    <style>
+        body {
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: left;
+            padding: 20px;
+            margin-top: 10px;
+            background-color: #482604;
+        }
+
+        #navbar {
+            margin-bottom: 10px;
+            background-color: beige;
+            padding: 10px;
+            text-align: right;
+        }
+
+        #navbar a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #482604;
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        #menu-section {
+            background-color: beige;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .menu-item {
+            margin-bottom: 40px;
+        }
+
+        .menu-item h3 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #482604;
+        }
+
+        .menu-item p {
+            font-style: oblique;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .menu-item p.price {
+            font-weight: bold;
+            color: #482604;
+        }
+
+        .order-section {
+            margin-top: 20px;
+        }
+
+        .recipe-section {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        footer {
+            background-color: #482604;
+            color: beige;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="navbar">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="menu.html">Menu</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="bookatable.html">Book a Table</a>
+        </div>
+    </header>
+
+    <!-- Menu Page Content -->
+    <div id="menu-section">
+        <h2 style="font-style: italic; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #482604;">
+            Menu</h2>
+
+        <!-- Dish 1: Tacos -->
+        <div class="menu-item">
+            <h3>Tacos</h3>
+            <img src="taco.jpg" alt="Tacos Image" style="max-width: 100%;">
+            <p>Our signature tacos filled with authentic Mexican flavors.</p>
+            <p class="price">$9.99</p>
+
+            <!-- Order Section -->
+            <div class="order-section">
+                <label for="tacos-quantity">Quantity:</label>
+                <input type="number" id="tacos-quantity" name="tacos-quantity" min="1" value="1">
+                <button onclick="order('Tacos', 9.99)">Order Now</button>
+            </div>
+
+            <!-- Recipe Section -->
+            <div class="recipe-section">
+                <h4>Recipe:</h4>
+                <p>1. Prepare the taco filling with a mix of fresh vegetables and seasoned meat.</p>
+                <p>2. Warm the tortillas and fill them with the prepared mixture.</p>
+                <p>3. Top with your favorite salsa and enjoy!</p>
+            </div>
+        </div>
+
+        <!-- Dish 2: Enchiladas -->
+        <div class="menu-item">
+            <h3>Enchiladas</h3>
+            <img src="enchildas.jpg" alt="Enchiladas Image" style="max-width: 100%;">
+            <p>Savory enchiladas with a perfect blend of spices.</p>
+            <p class="price">$12.99</p>
+
+            <!-- Order Section -->
+            <div class="order-section">
+                <label for="enchiladas-quantity">Quantity:</label>
+                <input type="number" id="enchiladas-quantity" name="enchiladas-quantity" min="1" value="1">
+                <button onclick="order('Enchiladas', 12.99)">Order Now</button>
+            </div>
+
+            <!-- Recipe Section -->
+            <div class="recipe-section">
+                <h4>Recipe:</h4>
+                <p>1. Prepare the enchilada filling with a delicious mix of meats and spices.</p>
+                <p>2. Roll the filling in corn tortillas and cover with enchilada sauce.</p>
+                <p>3. Bake until bubbly and serve with a dollop of sour cream.</p>
+            </div>
+        </div>
+
+        <!-- Add more dishes as needed -->
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Indulge. Savor. Celebrate. &copy; SpiceVista, 2024</p>
+        <p>Address: 16/3, Magrath Rd, Opposite Garuda Mall, Ashok Nagar, Bengaluru, Karnataka 560025</p>
+    </footer>
+
+    <!-- JavaScript for ordering -->
+    <script>
+        function order(itemName, itemPrice) {
+            const quantity = document.getElementById(`${itemName.toLowerCase()}-quantity`).value;
+            const total = quantity * itemPrice;
+            alert(`Order Confirmed!\n${quantity} ${itemName}(s) added to your cart.\nTotal: $${total.toFixed(2)}`);
+        }
+    </script>
+
+</body>
+
+</html>

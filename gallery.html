@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Page with Lightbox</title>
+    <style>
+         html, body {
+             height: 100%;
+             margin: 0;
+             padding: 0;
+             box-sizing: border-box;
+        }
+        body {
+            background: url('https://png.pngtree.com/background/20211215/original/pngtree-blur-light-spots-warm-color-bokeh-white-light-effect-background-picture-image_1465634.jpg')  center/cover no-repeat;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .restaurant-name {
+            font-size: 1.5em;
+            
+        }
+        nav {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: 150px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .gallery img:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(0, 0, 0);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 80%;
+            max-height: 80%;
+            border: 2px solid #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            cursor: pointer;
+        }
+        .toggle-buttons {
+            text-align: center;
+            margin: 20px 0;
+            
+            border-color: #fff;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <header>
+        <div class="restaurant-name" style="color: #ddd;">SpiceVista</div>
+        <nav>
+            <a href="home.html"> Home</a>
+            <a href="about.html">About</a>
+            <a href="#specials">Menu </a>
+            <a href="gallery.html">Gallery</a>
+            <a href="bookatable.html">Book a Table</a>
+        </nav>
+    </header>
+
+<div class="toggle-buttons">
+    <button onclick="toggleGallery(1)">1</button>
+    <button onclick="toggleGallery(2)">2</button>
+</div>
+   
+
+    <div class="gallery" id="gallery1">
+        <img src="https://b.zmtcdn.com/data/pictures/6/19026376/c32729946d3806a2585fcd02426dcaf3.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/6/19026376/c32729946d3806a2585fcd02426dcaf3.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A')">
+        <img src="https://b.zmtcdn.com/data/pictures/6/19026376/ac986e69af94dcf18900a4ffff49fed7.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/6/19026376/ac986e69af94dcf18900a4ffff49fed7.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A')">
+        <img src=" https://b.zmtcdn.com/data/pictures/chains/6/19026376/b0bfa95014c2d88d0ce12e4dffff7a67.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/chains/6/19026376/b0bfa95014c2d88d0ce12e4dffff7a67.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A')">
+        <img src=" https://b.zmtcdn.com/data/pictures/6/19026376/440dcdc32fba9706adb3553268687a11.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 2" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/6/19026376/440dcdc32fba9706adb3553268687a11.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A')">
+        <img src=" https://b.zmtcdn.com/data/pictures/chains/6/19026376/1b881c664e3598009574207ac608267c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 1" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/chains/6/19026376/1b881c664e3598009574207ac608267c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A')">
+        <img src=" https://b.zmtcdn.com/data/pictures/6/19026376/aee35f6e208908b9f2f18521069adc82.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/6/19026376/aee35f6e208908b9f2f18521069adc82.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/6/19026376/c1f3a62b8a9b2c7a435c8c66e5679d3d.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 1" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/6/19026376/c1f3a62b8a9b2c7a435c8c66e5679d3d.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A')">
+        <img src="https://b.zmtcdn.com/data/pictures/chains/6/19026376/6581e161068fd0564a933bc216ce14c5.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/chains/6/19026376/6581e161068fd0564a933bc216ce14c5.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/pictures/chains/6/19026376/e9b56dc818b899eca68ffc9c034e9e8a.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/chains/6/19026376/e9b56dc818b899eca68ffc9c034e9e8a.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/6/19026376/69682e73233a33e07f704e7a62626d1d.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/6/19026376/69682e73233a33e07f704e7a62626d1d.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/6/19026376/9db2a08bd31decce45fabed065e5597b.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/6/19026376/9db2a08bd31decce45fabed065e5597b.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A')">
+        <img src="https://b.zmtcdn.com/data/pictures/6/19026376/37d3d3fa4925bec378e25f247d404375.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/6/19026376/37d3d3fa4925bec378e25f247d404375.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/pictures/6/19026376/064c009a6389ad069b31eca9d9939352.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/6/19026376/064c009a6389ad069b31eca9d9939352.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/chains/6/19026376/b542f87942fb4c3a1a79a51f30e74510.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/chains/6/19026376/b542f87942fb4c3a1a79a51f30e74510.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/pictures/6/19026376/affa2b4869bcf2c32ec6408551b952b6.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/6/19026376/affa2b4869bcf2c32ec6408551b952b6.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="   https://b.zmtcdn.com/data/pictures/1/20851601/be3280d120d7d50e77347b408264b355.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/1/20851601/be3280d120d7d50e77347b408264b355.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/chains/1/20851601/917dd507fc162e37504f0e870e3ede99.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A  " alt="Image 2" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/chains/1/20851601/917dd507fc162e37504f0e870e3ede99.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/1/20851601/f3dcd3221de4087f3804164e1d480138.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/1/20851601/f3dcd3221de4087f3804164e1d480138.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A    ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/1/20851601/44c2ec6d353027ea39c8ee8f52e02a24.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   " alt="Image 2" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/1/20851601/44c2ec6d353027ea39c8ee8f52e02a24.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/1/20851601/af74ab864b0eeb11c1fdfc0ac6b334a8.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   " alt="Image 1" onclick="openLightbox('  https://b.zmtcdn.com/data/pictures/1/20851601/af74ab864b0eeb11c1fdfc0ac6b334a8.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A  ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/1/20851601/2b935011d35bac2835f80ee1fa7d0680.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   " alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/1/20851601/2b935011d35bac2835f80ee1fa7d0680.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/1/20851601/aacc4718d8bacca0e88df6ff56bbb89b.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   " alt="Image 1" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/1/20851601/aacc4718d8bacca0e88df6ff56bbb89b.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   ')">
+        <img src="https://b.zmtcdn.com/data/pictures/1/20851601/b47bb79638bb7f24a71f80f741db4b67.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A    " alt="Image 2" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/1/20851601/b47bb79638bb7f24a71f80f741db4b67.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/chains/1/20851601/98c0780c6bf250618c4180ebec99dbd3.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   " alt="Image 1" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/chains/1/20851601/98c0780c6bf250618c4180ebec99dbd3.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   ')">
+        <img src="https://b.zmtcdn.com/data/pictures/1/20851601/8ccffce26da8d5206d31a0e27ded7060.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A    " alt="Image 2" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/1/20851601/8ccffce26da8d5206d31a0e27ded7060.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   ')">
+        <img src="  https://b.zmtcdn.com/data/pictures/chains/1/20851601/513d2771506d563afa545fec80864476.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A  " alt="Image 1" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/chains/1/20851601/513d2771506d563afa545fec80864476.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/1/20851601/45756cf2900e2ff3e9b420f4731a4912.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   " alt="Image 2" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/1/20851601/45756cf2900e2ff3e9b420f4731a4912.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A  ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/1/20851601/0dd284a42d972e23c8ea57d7a5e6c66d.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/1/20851601/0dd284a42d972e23c8ea57d7a5e6c66d.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A    ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/1/20851601/8cf91e1f4ae5099178a55b0b6864f9d7.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   " alt="Image 2" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/1/20851601/8cf91e1f4ae5099178a55b0b6864f9d7.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   ')">
+        <img src="  https://b.zmtcdn.com/data/pictures/1/20851601/7dfab14ccf3fcda908c203e3b89ced36.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A  " alt="Image 1" onclick="openLightbox('  https://b.zmtcdn.com/data/pictures/1/20851601/7dfab14ccf3fcda908c203e3b89ced36.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A  ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/1/20851601/57a125c76d075db8471847dac1721388.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   " alt="Image 2" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/1/20851601/57a125c76d075db8471847dac1721388.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/chains/1/20851601/6180db0a179864c7630111a03cc6f369.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   " alt="Image 1" onclick="openLightbox('  https://b.zmtcdn.com/data/pictures/chains/1/20851601/6180db0a179864c7630111a03cc6f369.png?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A  ')">
+        <img src=" https://b.zmtcdn.com/data/reviews_photos/70e/e40c606201abe4fcc8b11248bdd6870e_1696059912.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A   " alt="Image 2" onclick="openLightbox('  https://b.zmtcdn.com/data/reviews_photos/70e/e40c606201abe4fcc8b11248bdd6870e_1696059912.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A  ')">
+        <img src="https://b.zmtcdn.com/data/reviews_photos/08a/8a882bfdcb6d2983e3df1aadbac7e08a_1698145529.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A    " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/reviews_photos/08a/8a882bfdcb6d2983e3df1aadbac7e08a_1698145529.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A    ')">
+        <img src="  https://b.zmtcdn.com/data/reviews_photos/3be/f34b830cfd0b0c758e8b2c3ddf63c3be_1696059909.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A  " alt="Image 2" onclick="openLightbox('  https://b.zmtcdn.com/data/reviews_photos/3be/f34b830cfd0b0c758e8b2c3ddf63c3be_1696059909.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A  ')">
+    </div>
+
+    <div class="gallery" id="gallery2" style="display: none;">
+        <img src=" https://b.zmtcdn.com/data/pictures/chains/6/19026376/0b52f92ff183598af69ed8ec4db1b339.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 2" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/chains/6/19026376/0b52f92ff183598af69ed8ec4db1b339.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A')">
+        <img src=" https://b.zmtcdn.com/data/pictures/6/19026376/684a2f3967f03d0b601027e2d4dea099.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/6/19026376/684a2f3967f03d0b601027e2d4dea099.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/6/19026376/c8e223f41e0adee2e581554ea9255275.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/6/19026376/c8e223f41e0adee2e581554ea9255275.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/6/19026376/726f9dfdd560c4c259112433295625bf.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 1" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/6/19026376/726f9dfdd560c4c259112433295625bf.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A')">
+        <img src="https://b.zmtcdn.com/data/pictures/chains/6/19026376/aac369bbea384ceb15c88311c247e2a3.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/chains/6/19026376/aac369bbea384ceb15c88311c247e2a3.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/pictures/6/19026376/a0c2b8179f3216868824b9e65b91cc18.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/6/19026376/a0c2b8179f3216868824b9e65b91cc18.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/pictures/6/19026376/f8d8986d1acd80acce9f228a34d8148c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/6/19026376/f8d8986d1acd80acce9f228a34d8148c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/pictures/6/19026376/d619acab589bcb47cbd24340ae7b4250.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/6/19026376/d619acab589bcb47cbd24340ae7b4250.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/pictures/6/19026376/d1e94b0a0dcdd75a8741058a53d73add.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 2" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/6/19026376/d1e94b0a0dcdd75a8741058a53d73add.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A')">
+        <img src="https://b.zmtcdn.com/data/reviews_photos/e17/44ff2baf5e1dcce1f9ebc493424dae17_1560968603.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/reviews_photos/e17/44ff2baf5e1dcce1f9ebc493424dae17_1560968603.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src=" https://b.zmtcdn.com/data/reviews_photos/742/d2704f1abf4d6fe4ed5efdede5465742_1563279291.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/reviews_photos/742/d2704f1abf4d6fe4ed5efdede5465742_1563279291.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/pictures/9/20385689/cdff004bfea101eba5dafb77789bf4ff.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/9/20385689/cdff004bfea101eba5dafb77789bf4ff.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A')">
+        <img src=" https://b.zmtcdn.com/data/pictures/9/20385689/0ffb91a32030b33a230038ccb4900f87.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/9/20385689/0ffb91a32030b33a230038ccb4900f87.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/pictures/chains/9/20385689/76fc980a02e61bcd420b1baae063debf.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/chains/9/20385689/76fc980a02e61bcd420b1baae063debf.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/9/20385689/f19a35d4a232b4cf78ac12aa45071b5e.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/9/20385689/f19a35d4a232b4cf78ac12aa45071b5e.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src=" https://b.zmtcdn.com/data/pictures/9/20385689/ff1f278e16347038de8f93ec3883a183.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 1" onclick="openLightbox(' https://b.zmtcdn.com/data/pictures/9/20385689/ff1f278e16347038de8f93ec3883a183.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A')">
+        <img src="https://b.zmtcdn.com/data/pictures/chains/9/20385689/21725e2b674c43b6ce978dc181151f44.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/chains/9/20385689/21725e2b674c43b6ce978dc181151f44.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/pictures/chains/9/20385689/ed02e39ce02ccdc5fc392512f02d084b.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/chains/9/20385689/ed02e39ce02ccdc5fc392512f02d084b.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/pictures/chains/9/20385689/52b3ef42b44ddb5d27408671254005c0.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/chains/9/20385689/52b3ef42b44ddb5d27408671254005c0.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/pictures/chains/9/20385689/18e0ba64b0e65479b03ba2b174421349.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/chains/9/20385689/18e0ba64b0e65479b03ba2b174421349.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/pictures/chains/9/20385689/67e7a7bfb201c3e78b2455153c089078.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/chains/9/20385689/67e7a7bfb201c3e78b2455153c089078.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/pictures/chains/9/20385689/d3a64feea0be895e1ccb40009941cd2c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/chains/9/20385689/d3a64feea0be895e1ccb40009941cd2c.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/pictures/chains/9/20385689/a04b751c9081a36afe1a718839801bb7.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/pictures/chains/9/20385689/a04b751c9081a36afe1a718839801bb7.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/reviews_photos/132/4bc568985076a208b440e28611b51132_1668944368.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/reviews_photos/132/4bc568985076a208b440e28611b51132_1668944368.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/reviews_photos/607/d32c0cb3e23c81a905730e1477c9f607_1680248132.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/reviews_photos/607/d32c0cb3e23c81a905730e1477c9f607_1680248132.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src=" https://b.zmtcdn.com/data/reviews_photos/7aa/31655c889a3ecff372ff9ab1a526f7aa_1668944368.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 1" onclick="openLightbox(' https://b.zmtcdn.com/data/reviews_photos/7aa/31655c889a3ecff372ff9ab1a526f7aa_1668944368.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A')">
+        <img src="https://b.zmtcdn.com/data/reviews_photos/4c1/7639dcd7008d419dbdf72d422aec74c1_1702966232.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/reviews_photos/4c1/7639dcd7008d419dbdf72d422aec74c1_1702966232.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/reviews_photos/983/90cc7c1801701e6c234bd6883aa7a983_1673852797.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox(' https://b.zmtcdn.com/data/reviews_photos/983/90cc7c1801701e6c234bd6883aa7a983_1673852797.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A')">
+        <img src=" https://b.zmtcdn.com/data/reviews_photos/9ab/170042dfba93f9b170f49e8d582a79ab_1669480125.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/reviews_photos/9ab/170042dfba93f9b170f49e8d582a79ab_1669480125.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/reviews_photos/07a/87b832ffe24679001e7383e0ff6ef07a_1663009999.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/reviews_photos/07a/87b832ffe24679001e7383e0ff6ef07a_1663009999.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/reviews_photos/164/ae4f4413859a65f5841988dc48ac7164_1669654555.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/reviews_photos/164/ae4f4413859a65f5841988dc48ac7164_1669654555.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/reviews_photos/69c/ecef66e4707b750c73e0a509b142869c_1668689186.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/reviews_photos/69c/ecef66e4707b750c73e0a509b142869c_1668689186.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src=" https://b.zmtcdn.com/data/reviews_photos/c73/2d15db87655b8613fc0bb36dde6b7c73_1668944365.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" alt="Image 2" onclick="openLightbox(' https://b.zmtcdn.com/data/reviews_photos/c73/2d15db87655b8613fc0bb36dde6b7c73_1668944365.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A')">
+        <img src="https://b.zmtcdn.com/data/reviews_photos/244/fecc8e2ba8536e6c104effa178586244_1668320617.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 1" onclick="openLightbox('https://b.zmtcdn.com/data/reviews_photos/244/fecc8e2ba8536e6c104effa178586244_1668320617.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        <img src="https://b.zmtcdn.com/data/reviews_photos/679/24956caffd7cca9c48188f627f24a679_1677003622.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A " alt="Image 2" onclick="openLightbox('https://b.zmtcdn.com/data/reviews_photos/679/24956caffd7cca9c48188f627f24a679_1677003622.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A ')">
+        </div>
+         <script>
+            function toggleGallery(setNumber) {
+                // Hide all galleries
+                document.getElementById('gallery1').style.display = 'none';
+                document.getElementById('gallery2').style.display = 'none';
+    
+                // Show the selected gallery
+                document.getElementById('gallery' + setNumber).style.display = 'flex';
+            }
+        </script>
+    <div class="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-image" src="" alt="Selected Image">
+    </div>
+
+    <script>
+        function openLightbox(imageSrc) {
+            document.getElementById('lightbox-image').src = imageSrc;
+            document.querySelector('.lightbox').style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.querySelector('.lightbox').style.display = 'none';
+        }
+</script>
+</body>
+</html>

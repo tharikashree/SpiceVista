@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpiceVista</title>
+    <style>
+         html, body {
+             height: 100%;
+             margin: 0;
+             padding: 0;
+             box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('img.jpg') center/cover no-repeat; /* Replace with your background image */
+            color: rgb(250, 247, 247);
+            
+            
+           
+        }
+       
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            margin-left:2px;
+            color:black;
+            
+            padding: 10px;
+            font-size: 0.8em;
+        }
+        button {
+            margin-left:710px;
+            align-items: center;
+            text-align: center;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: transparent; /* Transparent background */
+            color: white;
+            border: 2px solid white; /* White border */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition for background color */
+        }
+        button:hover {
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white on hover */
+        }
+        
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .restaurant-name {
+            font-size: 2em;
+            
+        }
+        nav {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="contact-info"> 
+         📞 +1 123-456-7890   &nbsp;  🕒 Mon-Sat 11:00 A.M to 23:00 P.M 
+    </div>
+    <header>
+        <div class="restaurant-name">SpiceVista</div>
+        <nav>
+            <a href="home.html"> Home</a>
+            <a href="about.html">About</a>
+            <a href="#specials">Menu </a>
+            <a href="gallery.html">Gallery</a>
+            <a href="bookatable.html">Book a Table</a>
+        </nav>
+    </header>
+    <h1 style="text-align: center; font-size:2.6em; font-style: bold; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; margin-top:15%;"> Enjoy delicious food <br> at SpiceVista</h1> </br>
+    <button text-align:center onclick="openMenu()">Get Started</button>
+
+    <script>
+        function openMenu() {
+            // Redirect to the menu page
+            window.location.href = "home.html";
+        }
+    </script>
+    
+
+    <!-- Rest of your content goes here -->
+
+</body>
+</html>

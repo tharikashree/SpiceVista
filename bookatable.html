@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[SpiceVista] - Book a Table</title>
+    <style>
+        body {
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+    
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: left;
+            padding: 20px;
+            margin-top: 10px;
+            background-color: #482604;
+        }
+    
+        #navbar {
+            margin-bottom: 10px;
+            background-color: beige;
+            padding: 10px;
+            text-align: right;
+        }
+    
+        #navbar a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #482604;
+            font-weight: bold;
+            font-size: 1em;
+        }
+    
+        #booking-section {
+            background-color: #fff;
+            text-align: center;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 50px;
+        }
+    
+        .booking-form {
+            max-width: 400px;
+            margin: auto;
+        }
+    
+        .booking-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #482604;
+        }
+    
+        .booking-form input,
+        .booking-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    
+        .booking-form button {
+            background-color: #482604;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    
+        .booking-form button:hover {
+            background-color: #311e0d;
+        }
+    
+        footer {
+            background-color: #482604;
+            color: beige;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="navbar">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="menu.html">Menu</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="book_table.html">Book a Table</a>
+        </div>
+    </header>
+
+    <!-- Book a Table Page Content -->
+    <div id="booking-section">
+        <h2 style="font-style: italic; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #482604;">
+            Book a Table</h2>
+
+        <!-- Booking Form -->
+        <div class="booking-form">
+            <form action="book_table_process.php" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="date">Preferred Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time">Preferred Time:</label>
+                <input type="time" id="time" name="time" required>
+
+                <label for="party-size">Party Size:</label>
+                <select id="party-size" name="party-size" required>
+                    <option value="1">1 person</option>
+                    <option value="2">2 people</option>
+                    <option value="3">3 people</option>
+                    <option value="4">4 people</option>
+                    <option value="5+">5 or more people</option>
+                </select>
+                <button type="button" onclick="redirectToPayment()">Submit Reservation</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Indulge. Savor. Celebrate. &copy; SpiceVista, 2024</p>
+        <p>Address: 16/3, Magrath Rd, Opposite Garuda Mall, Ashok Nagar, Bengaluru, Karnataka 560025</p>
+    </footer>
+    <script>
+     function redirectToPayment() {
+            window.location.href = 'payment.html';
+            return false; // Prevents the form from submitting to the action URL
+        }
+        
+    </script>
+
+</body>
+
+</html>
